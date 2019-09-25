@@ -7,12 +7,17 @@ const isVisible = element => {
   return elementTop < window.innerHeight && elementBottom >= 0;
 };
 
-// As the user scrolls, toggle certain classes to allow CSS animations
-const visibilityClass = selector => {
+const setVisibilityClasses = selector => {
   [].forEach.call(document.querySelectorAll(selector), element => {
     element.classList.remove(isVisible(element) ? "invisible" : "visible");
     element.classList.add(isVisible(element) ? "visible" : "invisible");
   });
+  window.requestAnimationFrame(setVisibilityClasses(selector));
+};
+
+// As the user scrolls, toggle certain classes to allow CSS animations
+const visibilityClass = selector => {
+  window.requestAnimationFrame(setVisibilityClasses(selector));
 };
 
 export default visibilityClass;
