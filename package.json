@@ -1,6 +1,6 @@
 {
   "name": "visibility-class",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Adds a visible/invisible class to chosen elements as you scroll.",
   "main": "index.js",
   "scripts": {

@@ -7,17 +7,24 @@ const isVisible = element => {
   return elementTop < window.innerHeight && elementBottom >= 0;
 };
 
-const setVisibilityClasses = selector => {
-  [].forEach.call(document.querySelectorAll(selector), element => {
+let vcAnimationFrame;
+let vcSelectors = [];
+
+const setVisibilityClasses = () => {
+  const selectors = vcSelectors.join(",");
+  [].forEach.call(document.querySelectorAll(selectors), element => {
     element.classList.remove(isVisible(element) ? "invisible" : "visible");
     element.classList.add(isVisible(element) ? "visible" : "invisible");
   });
-  window.requestAnimationFrame(setVisibilityClasses(selector));
+  vcAnimationFrame = window.requestAnimationFrame(setVisibilityClasses);
 };
 
 // As the user scrolls, toggle certain classes to allow CSS animations
 const visibilityClass = selector => {
-  window.requestAnimationFrame(setVisibilityClasses(selector));
+  // Queue selector sets up, in case users instantiate it multiple times
+  vcSelectors.push(selector);
+  window.cancelAnimationFrame(vcAnimationFrame);
+  vcAnimationFrame = window.requestAnimationFrame(setVisibilityClasses);
 };
 
 export default visibilityClass;
