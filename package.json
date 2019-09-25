@@ -1,0 +1,19 @@
+{
+  "name": "visibility-class",
+  "version": "1.0.0",
+  "description": "Adds a visible/invisible class to chosen elements as you scroll.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/entozoon/visibility-class.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/entozoon/visibility-class/issues"
+  },
+  "homepage": "https://github.com/entozoon/visibility-class#readme"
+}
